@@ -1,6 +1,6 @@
 // ZSkillup — shared footer, injected so all pages stay in sync.
 // The <script> tag including this file must carry data-depth="0|1|2"
-// (0 = site root, 1 = /career/ /faqs/, 2 = /curriculum/<program>/)
+// (0 = site root, 1 = /career/, 2 = /curriculum/<program>/)
 (function () {
   var scriptEl = document.currentScript;
   var depth = parseInt(scriptEl.getAttribute('data-depth') || '0', 10);
@@ -30,7 +30,7 @@
     + '        <li><a href="' + root + '#program">About the Program</a></li>'
     + '        <li><a href="' + root + '#fees">Fees</a></li>'
     + '        <li><a href="' + root + 'career/">Career</a></li>'
-    + '        <li><a href="' + root + 'faqs/">FAQs</a></li>'
+    + '        <li><a href="' + root + '#faqs">FAQs</a></li>'
     + '      </ul>'
     + '    </div>'
     + '    <div class="footer-col">'

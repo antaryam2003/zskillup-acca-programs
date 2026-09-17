@@ -394,9 +394,11 @@ p { line-height: 1.65; color: var(--gray-600); margin: 0; }
 .faq-q { width: 100%; display: flex; align-items: center; gap: 14px; background: none; border: none; padding: 18px 20px; text-align: left; }
 .faq-num { font-size: 12px; font-weight: 800; color: var(--red); background: var(--bg-red-tint); border-radius: 999px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .faq-q-text { flex: 1; font-weight: 700; font-size: 14.5px; color: var(--navy); }
-.faq-toggle { width: 26px; height: 26px; border-radius: 999px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform .2s ease, background .2s ease; }
+.faq-toggle { width: 26px; height: 26px; border-radius: 999px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .2s ease; }
 .faq-toggle svg { width: 14px; height: 14px; }
-.faq-item.is-open .faq-toggle { transform: rotate(45deg); background: var(--red); color: #fff; }
+.faq-toggle-v { transition: opacity .15s ease, transform .15s ease; transform-origin: center; }
+.faq-item.is-open .faq-toggle { background: var(--red); color: #fff; }
+.faq-item.is-open .faq-toggle-v { opacity: 0; transform: scaleY(0); }
 .faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
 .faq-item.is-open .faq-a { max-height: 400px; }
 .faq-a p { padding: 0 20px 20px 62px; font-size: 14px; }

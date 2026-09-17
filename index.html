@@ -209,6 +209,9 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
 .strength-card.zskillup .strength-item .ico { background: var(--bg-blue-tint); color: var(--blue-dot); }
 .strength-item span { font-size: 12.5px; font-weight: 600; color: var(--gray-700); }
 @media (max-width: 640px) { .strength-grid { grid-template-columns: 1fr 1fr; } }
+
+/* Anchor-scroll target for the navbar's FAQs link, so the heading clears the sticky nav */
+#faqs { scroll-margin-top: 76px; }
 </style>
 </head>
 <body class="home">
@@ -230,7 +233,7 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
         <li><a href="#fees">Fees</a></li>
         <li><a href="curriculum/bcom-acca/">Curriculum</a></li>
         <li><a href="career/">Career</a></li>
-        <li><a href="faqs/">FAQs</a></li>
+        <li><a href="#faqs">FAQs</a></li>
       </ul>
     </nav>
     <div class="nav-cta">
@@ -434,7 +437,7 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
             <div>
               <h4>Have questions?</h4>
               <p>Talk to our team for personalized guidance on fees and payment options.</p>
-              <a href="faqs/#talk-to-team" class="btn btn-outline btn-sm">Talk to Our Team <span aria-hidden="true">&rarr;</span></a>
+              <a href="#talk-to-team" class="btn btn-outline btn-sm">Talk to Our Team <span aria-hidden="true">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -510,13 +513,18 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
   </section>
 
   <!-- ============ FAQ (populated below) ============ -->
-  <section class="section section--alt" id="faqs-home" data-faq-root>
+  <section class="section section--alt" id="faqs" data-faq-root>
     <div class="container">
       <div class="eyebrow text-center" style="justify-content:center;">FAQs</div>
       <h2 class="text-center">Frequently Asked <span class="accent-red">Questions</span></h2>
-      <p class="mt-8 text-center" style="max-width:600px;">Everything you need to know about ACCA and the ZSkillup programs.</p>
+      <p class="mt-8 text-center" style="max-width:600px; margin-left:auto; margin-right:auto;">Everything you need to know about ACCA and the ZSkillup programs.</p>
       <div class="mt-32" data-faq-mount></div>
-      <p class="text-center mt-24"><a href="faqs/" class="btn btn-outline">View All FAQs <span aria-hidden="true">&rarr;</span></a></p>
+
+      <div class="faq-support" id="talk-to-team">
+        <h3>Still have a question?</h3>
+        <p>Our team is here to help you with personalized guidance.</p>
+        <a href="mailto:hello@zskillup.com" class="btn btn-primary">Talk to Our Team <span aria-hidden="true">&rarr;</span></a>
+      </div>
     </div>
   </section>
 </main>
@@ -551,9 +559,9 @@ document.querySelectorAll('[data-play-video]').forEach(function (btn) {
   });
 });
 
-// Homepage FAQ preview: render first 5 questions (one per category, plus one extra) with shared accordion
+// Full FAQ section: category tabs + numbered accordion + load more (same engine as the rest of the site)
 if (window.ZFAQ_DATA && document.querySelector('[data-faq-mount]')) {
-  ZFAQRender(document.querySelector('[data-faq-mount]'), { preview: true, limit: 6 });
+  ZFAQRender(document.querySelector('[data-faq-mount]'), {});
 }
 </script>
 </body>
