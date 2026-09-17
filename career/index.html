@@ -7,37 +7,76 @@
 <meta name="description" content="See where ZSkillup learners work, the career pathways ACCA opens up, and the hiring partners who recruit our students.">
 <link rel="stylesheet" href="../assets/css/style.css">
 <style>
-.career-hero { background: #FFFBF9; position: relative; overflow: hidden; padding: 44px 0 40px; }
-.career-hero-grid { position: relative; display: grid; grid-template-columns: 1fr .92fr; gap: 44px; align-items: center; }
+.career-hero {
+  position: relative; overflow: hidden; width: 100%; box-sizing: border-box;
+  background-image: url('../assets/images/career-hero-bg.png');
+  background-repeat: no-repeat; background-size: cover; background-position: center center;
+  aspect-ratio: 1933 / 813; min-height: 500px; max-height: 720px;
+  display: flex; align-items: center;
+}
+.career-hero-inner { position: relative; z-index: 2; width: 100%; }
+.career-hero-copy { max-width: 460px; }
 .career-hero-eyebrow { font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #6B7A96; margin-bottom: 14px; }
-.career-hero h1 { color: var(--navy); font-size: clamp(30px, 3.6vw, 44px); line-height: 1.12; }
+.career-hero h1 { color: var(--navy); font-size: clamp(28px, 3.2vw, 40px); line-height: 1.14; }
 .career-hero .accent-red { color: var(--red); }
-.career-hero p.lead { color: var(--gray-600); font-size: 16px; max-width: 460px; margin-top: 16px; }
+.career-hero p.lead { color: var(--gray-600); font-size: 15.5px; margin-top: 16px; }
 .career-hero-actions { display: flex; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
-.career-stats { display: grid; grid-template-columns: repeat(4, auto); gap: 40px; margin-top: 40px; }
-.career-stat b { display:block; font-size: 26px; font-weight: 900; color: var(--navy); }
-.career-stat span { font-size: 12.5px; color: var(--gray-500); }
+.career-stats { display: flex; gap: 30px; margin-top: 38px; flex-wrap: wrap; max-width: 620px; }
+.career-stat b { display:block; font-size: 24px; font-weight: 900; color: var(--navy); }
+.career-stat span { font-size: 12px; color: var(--gray-500); }
 
-.career-hero-photo { position: relative; height: 100%; min-height: 420px; border-radius: 22px; overflow: hidden; background: linear-gradient(160deg,#e9edf3,#dfe4ec); }
-.career-hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 60% center; }
-.career-hero-photo .photo-quote {
-  position: absolute; left: 22px; top: 26px; font-family: "Segoe Print","Comic Sans MS",cursive;
-  font-size: 21px; line-height: 1.28; color: var(--navy); text-shadow: 0 2px 10px rgba(255,255,255,.6);
+.career-hero .badge-float {
+  position: absolute; z-index: 2;
+  right: max(20px, calc((100% - 1280px) / 2 + 32px)); bottom: 9%;
+  background:#fff; border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow-card); max-width: 190px;
 }
-.career-hero-photo .photo-quote .underline { display:block; width: 74px; height: 3px; background: var(--red); border-radius: 2px; margin-top: 6px; }
-.career-hero-photo .badge-float { position:absolute; right:18px; bottom:18px; background:#fff; border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow-card); max-width: 190px; }
-.career-hero-photo .badge-float svg { width:26px; height:26px; stroke: var(--navy); margin-bottom: 10px; }
-.career-hero-photo .badge-float span { display:block; font-size: 13px; font-weight: 700; color: var(--navy); line-height:1.35; }
-.career-hero-photo .badge-float .underline { display:block; width: 26px; height: 3px; background: var(--red); border-radius: 2px; margin-top: 10px; }
-@media (max-width: 900px){
-  .career-hero-grid{grid-template-columns:1fr;}
-  .career-hero-photo{min-height:320px;}
-  .career-stats{grid-template-columns:repeat(2, auto); row-gap:22px;}
+.career-hero .badge-float svg { width:24px; height:24px; stroke: var(--navy); margin-bottom: 8px; }
+.career-hero .badge-float span { display:block; font-size: 12.5px; font-weight: 700; color: var(--navy); line-height:1.35; }
+.career-hero .badge-float .underline { display:block; width: 24px; height: 3px; background: var(--red); border-radius: 2px; margin-top: 8px; }
+
+@media (max-width: 1450px) { .career-hero-copy { max-width: 400px; } }
+@media (max-width: 1100px) {
+  /* Keep the box close to the image's own aspect ratio so cover-fit barely
+     needs to crop — content is tightened up to fit that shorter height
+     instead of letting the hero grow tall (which would force a heavy zoom
+     and push the image's own "Global Skills" text into the copy column). */
+  .career-hero { min-height: 400px; max-height: 480px; padding: 28px 0; }
+  .career-hero-copy { max-width: 300px; }
+  .career-hero-eyebrow { font-size: 10.5px; margin-bottom: 8px; }
+  .career-hero h1 { font-size: clamp(22px, 3.6vw, 28px); line-height: 1.12; }
+  .career-hero p.lead { font-size: 13px; margin-top: 8px; }
+  .career-hero-actions { margin-top: 14px; gap: 10px; }
+  .career-hero-actions .btn { padding: 10px 16px; font-size: 12.5px; }
+  .career-stats { gap: 16px; margin-top: 16px; max-width: 100%; }
+  .career-stat b { font-size: 17px; }
+  .career-stat span { font-size: 10px; }
+  .career-hero .badge-float { right: 16px; bottom: 14px; padding: 8px 10px; max-width: 130px; }
+  .career-hero .badge-float svg { width: 16px; height: 16px; margin-bottom: 4px; }
+  .career-hero .badge-float span { font-size: 10px; }
 }
-@media (max-width: 480px){
-  .career-hero-actions{flex-direction:column; align-items:stretch;}
-  .career-hero-photo .photo-quote{font-size:17px; left:16px; top:18px;}
-  .career-hero-photo .badge-float{right:14px; bottom:14px; padding:12px 14px; max-width:160px;}
+@media (max-width: 640px) {
+  /* The source image is far too wide/cinematic to keep text legibly
+     overlaid on it at phone width. Instead: a short visible photo strip
+     up top (tall enough to clear her face), then the copy sits in its
+     own solid panel below — still one continuous hero, no separate
+     section, but text is never fighting the photo for contrast. */
+  .career-hero { min-height: 0; max-height: none; aspect-ratio: auto; background-position: 74% center; padding: 0; display: block; }
+  .career-hero-inner {
+    margin-top: 300px; background: #fff; padding: 26px 24px 32px;
+    border-radius: 24px 24px 0 0; box-shadow: 0 -12px 30px rgba(10,25,49,.08);
+  }
+  .career-hero-copy { max-width: none; }
+  .career-hero-eyebrow { font-size: 11px; }
+  .career-hero h1 { font-size: clamp(26px, 7vw, 32px); }
+  .career-hero p.lead { font-size: 14px; }
+  .career-hero-actions { flex-direction: column; align-items: stretch; margin-top: 22px; gap: 12px; }
+  .career-hero-actions .btn { padding: 14px 26px; font-size: 14.5px; }
+  .career-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px; margin-top: 30px; max-width: none; }
+  .career-stat b { font-size: 22px; }
+  .career-stat span { font-size: 12px; }
+  .career-hero .badge-float { top: 186px; right: 16px; bottom: auto; padding: 12px 14px; max-width: 150px; }
+  .career-hero .badge-float svg { width: 22px; height: 22px; margin-bottom: 8px; }
+  .career-hero .badge-float span { font-size: 12px; }
 }
 
 .learners-band { background: var(--bg-blue-tint); }
@@ -92,24 +131,14 @@
 <main id="main">
   <!-- HERO -->
   <section class="career-hero">
-    <div class="container">
-      <div class="career-hero-grid">
-        <div>
-          <div class="career-hero-eyebrow">Your Career, Global Opportunities</div>
-          <h1>From ACCA to a<br><span class="accent-red">Global Career</span></h1>
-          <p class="lead">Gain globally recognized qualifications, real-world skills and career support to step into opportunities across industries and countries.</p>
-          <div class="career-hero-actions">
-            <a href="#learners-work" class="btn btn-primary">Explore Career Opportunities <span aria-hidden="true">&rarr;</span></a>
-            <a href="../#talk-to-team" class="btn btn-outline">Talk to a Career Advisor</a>
-          </div>
-        </div>
-        <div class="career-hero-photo">
-          <img src="../assets/images/career-woman.png" alt="ZSkillup graduate ready for a global finance career">
-          <div class="photo-quote">Global<br>Skills.<br>Real<br>Opportunities.<span class="underline"></span></div>
-          <div class="badge-float">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
-            <span>Work Anywhere. Build a Career Without Limits.<span class="underline"></span></span>
-          </div>
+    <div class="container career-hero-inner">
+      <div class="career-hero-copy">
+        <div class="career-hero-eyebrow">Your Career, Global Opportunities</div>
+        <h1>From ACCA to a<br><span class="accent-red">Global Career</span></h1>
+        <p class="lead">Gain globally recognized qualifications, real-world skills and career support to step into opportunities across industries and countries.</p>
+        <div class="career-hero-actions">
+          <a href="#learners-work" class="btn btn-primary">Explore Career Opportunities <span aria-hidden="true">&rarr;</span></a>
+          <a href="../#talk-to-team" class="btn btn-outline">Talk to a Career Advisor</a>
         </div>
       </div>
       <div class="career-stats">
@@ -118,6 +147,10 @@
         <div class="career-stat"><b>19 LPA</b><span>Highest Package</span></div>
         <div class="career-stat"><b>5.6 LPA</b><span>Average Package</span></div>
       </div>
+    </div>
+    <div class="badge-float">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
+      <span>Work Anywhere. Build a Career Without Limits.<span class="underline"></span></span>
     </div>
   </section>
 
