@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZSkillup — Your B.Com+ACCA. A Global Career Awaits.</title>
+<meta name="description" content="Build a globally recognised finance career with ZSkillup's B.Com+ACCA, ACCA Only, and ACCA Fast Track programs.">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* ---- Homepage-only styles ---- */
+.hero { position: relative; background: var(--navy); overflow: hidden; padding: 56px 0 0; }
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(1100px 500px at 20% 0%, rgba(227,6,19,.16), transparent 60%),
+              radial-gradient(900px 500px at 90% 10%, rgba(37,99,235,.16), transparent 60%);
+}
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; padding-bottom: 64px; }
+.hero-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .22em; color: #ffb3b8; text-transform: uppercase; margin-bottom: 18px; }
+.hero h1 { color: #fff; }
+.hero h1 .accent-red { color: #ff5561; }
+.hero p.lead { color: rgba(255,255,255,.72); font-size: 17px; max-width: 520px; margin-top: 18px; }
+.hero-benefits { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; }
+.hero-benefit { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.85); font-size: 13.5px; font-weight: 600; }
+.hero-benefit .ico { width: 34px; height: 34px; border-radius: 999px; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hero-benefit svg { width: 17px; height: 17px; stroke: #fff; }
+.hero-actions { display: flex; align-items: center; gap: 18px; margin-top: 32px; flex-wrap: wrap; }
+.watch-story { display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 700; font-size: 14.5px; }
+.play-dot { width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; transition: background .15s ease; }
+.watch-story:hover .play-dot { background: rgba(255,255,255,.24); }
+.play-dot svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
+
+.hero-photo-wrap { position: relative; }
+.hero-photo { position: relative; border-radius: 28px; overflow: hidden; background: linear-gradient(160deg,#1b2c50,#0a1931); aspect-ratio: 4/4.6; display: flex; align-items: flex-end; }
+.hero-photo img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.hero-photo .quote-chip {
+  position: absolute; left: 18px; top: 22px; color: #fff; font-family: "Segoe Print","Comic Sans MS",cursive; font-size: 15px; line-height: 1.35; opacity: .9;
+}
+.brochure-card {
+  background: #fff; border-radius: var(--radius-lg); padding: 26px; box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  margin-top: -70px; position: relative; z-index: 2; margin-left: 6%; margin-right: -6%;
+}
+@media (max-width: 1180px) { .brochure-card { margin-left: 0; margin-right: 0; } }
+.brochure-card h3 { font-size: 16px; }
+.brochure-card .sub { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
+.brochure-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 18px; }
+.field {
+  display: flex; align-items: center; gap: 10px; border: 1.5px solid var(--gray-200); border-radius: 12px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.field svg { width: 17px; height: 17px; stroke: var(--gray-500); flex-shrink: 0; }
+.field input, .field select { border: none; outline: none; font: inherit; width: 100%; color: var(--gray-900); background: transparent; }
+.field select { appearance: none; color: var(--gray-600); }
+.privacy-note { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--gray-500); margin-top: 12px; }
+.privacy-note svg { width: 14px; height: 14px; margin-top: 1px; flex-shrink: 0; }
+
+.scroll-hint { display: flex; justify-content: center; padding: 6px 0 18px; position: relative; }
+.scroll-hint span { font-size: 11px; color: rgba(255,255,255,.5); letter-spacing: .1em; text-transform: uppercase; position: absolute; top: 34px; }
+
+/* journey strip */
+.journey { padding: 56px 0 8px; }
+.journey-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+.journey-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+.journey-step { text-align: center; position: relative; }
+.journey-step .ico {
+  width: 62px; height: 62px; border-radius: 999px; background: var(--bg-red-tint); color: var(--red);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
+}
+.journey-step .ico svg { width: 26px; height: 26px; }
+.journey-step:last-child .ico { background: var(--navy-soft); color: var(--navy); }
+.journey-step h4 { font-size: 15px; color: var(--navy); }
+.journey-step p { font-size: 13.5px; margin-top: 6px; }
+@media (max-width: 760px) { .journey-steps { grid-template-columns: 1fr 1fr; row-gap: 32px; } }
+
+/* program cards */
+.program-card {
+  display: block; background: #fff; border: 1.5px solid var(--gray-200); border-radius: var(--radius-lg);
+  padding: 28px; transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease; position: relative;
+}
+.program-card:hover { border-color: var(--navy); box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+.program-card .top-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+.program-card .mark { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 900; }
+.program-card .mark.navy { background: var(--navy-soft); color: var(--navy); }
+.program-card .mark.red { background: var(--red); color: #fff; font-size: 12px; letter-spacing: .04em; }
+.program-card .mark.doc { background: var(--gray-100); color: var(--gray-700); }
+.program-card h3 { font-size: 18px; }
+.program-card .sub { font-size: 12.5px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .04em; margin-top: 4px; }
+.program-card p.desc { margin-top: 12px; font-size: 14px; }
+.program-card .go { margin-top: 20px; display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13.5px; color: var(--navy); }
+.program-card .go .circle { width: 32px; height: 32px; border-radius: 999px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; transition: background .15s ease, transform .15s ease; }
+.program-card:hover .go .circle { background: var(--red); transform: translateX(3px); }
+.program-card:hover .go .circle svg { stroke: #fff; }
+.program-card .go .circle svg { width: 15px; height: 15px; stroke: var(--navy); }
+
+/* fees */
+.fees-layout { display: grid; grid-template-columns: 1fr 320px; gap: 28px; align-items: start; margin-top: 32px; }
+.fee-tabs { margin-bottom: 24px; }
+.fee-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.fee-card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: var(--radius-lg); padding: 26px; position: relative; transition: box-shadow .2s ease, border-color .2s ease; scroll-margin-top: 100px; }
+.fee-card.highlight { border-color: var(--navy); box-shadow: var(--shadow-card); }
+.fee-card .most-popular { position: absolute; top: -12px; left: 24px; background: var(--navy); color: #fff; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 999px; }
+.fee-card .mark { width: 40px; height: 40px; border-radius: 12px; margin-bottom: 16px; }
+.fee-card h3 { font-size: 17px; }
+.fee-card .sub { font-size: 12.5px; color: var(--gray-500); margin-top: 4px; min-height: 32px; }
+.fee-price-row { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .04em; margin: 20px 0 4px; }
+.fee-price { font-size: 24px; font-weight: 900; color: var(--navy); }
+.fee-price .tba { font-size: 12px; font-weight: 600; color: var(--gray-500); text-transform: none; letter-spacing: 0; margin-left: 6px; }
+.fee-card .btn { margin-top: 18px; }
+.value-box { background: var(--bg-green-tint); border: 1px solid #DCEFE3; border-radius: var(--radius-lg); padding: 26px; }
+.value-box h3 { font-size: 18px; }
+.value-box p { font-size: 13.5px; margin-top: 8px; }
+.value-list { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+.value-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray-700); font-weight: 600; }
+.value-list svg { width: 18px; height: 18px; color: #2E9E5B; flex-shrink: 0; }
+.have-questions { margin-top: 22px; background: #fff; border-radius: var(--radius-md); padding: 18px; display: flex; gap: 12px; align-items: flex-start; }
+.have-questions .ico { width: 38px; height: 38px; border-radius: 999px; background: var(--navy-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.have-questions .ico svg { width: 18px; height: 18px; stroke: var(--navy); }
+.have-questions h4 { font-size: 14px; }
+.have-questions p { font-size: 12.5px; margin: 4px 0 10px; }
+@media (max-width: 980px) { .fees-layout { grid-template-columns: 1fr; } .fee-cards { grid-template-columns: 1fr; } }
+
+/* video */
+.video-section { background: #FFF7F0; }
+.video-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.video-copy p.lead2 { margin-top: 14px; font-size: 15.5px; }
+.video-actions { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
+.video-duration { font-weight: 700; color: var(--gray-600); font-size: 14px; }
+.video-frame { background: #E9EAED; border-radius: 18px; padding: 14px 14px 26px; box-shadow: var(--shadow-card); }
+.video-screen { position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 16/9; background: #0A1931; }
+.video-screen img { width: 100%; height: 100%; object-fit: cover; }
+.video-screen .overlay-copy { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); color: #fff; text-align: right; font-weight: 800; font-size: 15px; line-height: 1.35; text-shadow: 0 2px 10px rgba(0,0,0,.5); }
+.video-screen button.play-btn {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 66px; height: 66px; border-radius: 999px;
+  background: rgba(255,255,255,.92); border: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 26px rgba(0,0,0,.3);
+  transition: transform .15s ease;
+}
+.video-screen button.play-btn:hover { transform: translate(-50%,-50%) scale(1.07); }
+.video-screen button.play-btn svg { width: 22px; height: 22px; fill: var(--red); margin-left: 3px; }
+.video-toast {
+  position: absolute; left: 50%; bottom: 14px; transform: translate(-50%, 10px); background: rgba(10,25,49,.92); color: #fff;
+  font-size: 12.5px; font-weight: 600; padding: 8px 14px; border-radius: 999px; opacity: 0; transition: opacity .2s ease, transform .2s ease; pointer-events: none;
+}
+.video-toast.show { opacity: 1; transform: translate(-50%, 0); }
+.video-notch { display: flex; justify-content: center; margin-top: 10px; }
+.video-notch span { width: 46px; height: 5px; background: #C9CBD1; border-radius: 4px; }
+@media (max-width: 900px) { .video-layout { grid-template-columns: 1fr; } }
+
+/* two strengths */
+.strengths-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+.strengths-side-note { font-family: "Segoe Print","Comic Sans MS",cursive; font-size: 13px; color: var(--gray-500); text-align: right; line-height: 1.4; }
+.strength-card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: var(--radius-lg); padding: 30px; }
+.strength-card .who { font-size: 12px; font-weight: 800; letter-spacing: .12em; color: var(--gray-500); text-transform: uppercase; }
+.strength-card .who b { color: var(--red); font-size: 15px; letter-spacing: 0; }
+.strength-card.zskillup .who b { color: var(--blue-dot); }
+.strength-card h3 { font-size: 19px; margin-top: 8px; }
+.strength-card p.desc { margin-top: 10px; font-size: 14px; }
+.strength-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
+.strength-item { text-align: center; }
+.strength-item .ico { width: 46px; height: 46px; border-radius: 999px; background: var(--bg-red-tint); color: var(--red); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.strength-item .ico svg { width: 20px; height: 20px; }
+.strength-card.zskillup .strength-item .ico { background: var(--bg-blue-tint); color: var(--blue-dot); }
+.strength-item span { font-size: 12.5px; font-weight: 600; color: var(--gray-700); }
+@media (max-width: 640px) { .strength-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-site-header>
+  <div class="container nav-row">
+    <a href="./" class="brand" aria-label="ZSkillup home">
+      <span class="brand-mark">Z</span>
+      <span class="stack">
+        <span class="brand-word">ZSKILLUP</span>
+        <span class="brand-tag">ACCA GLOBAL PROGRAMS</span>
+      </span>
+    </a>
+    <nav class="site-nav" data-site-nav>
+      <ul class="nav-links">
+        <li><a href="./" class="active">Home</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#fees">Fees</a></li>
+        <li><a href="curriculum/bcom-acca/">Curriculum</a></li>
+        <li><a href="career/">Career</a></li>
+        <li><a href="faqs/">FAQs</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#brochure" class="btn btn-primary btn-sm">Download Brochure <span aria-hidden="true">&rarr;</span></a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow">From Classrooms to a Global Career</div>
+        <h1>Your <span class="accent-red">B.Com+ACCA</span><br>A Global Career Awaits</h1>
+        <p class="lead">Gain international recognition, build in-demand skills, and unlock opportunities in finance across the world.</p>
+        <div class="hero-benefits">
+          <div class="hero-benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></span>Globally Recognised Qualification</div>
+          <div class="hero-benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>In-Demand Finance Skills</div>
+          <div class="hero-benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.6"/><path d="M15.7 14.2c2.9.4 4.8 2.4 4.8 5.6"/></svg></span>A Future-Ready Global Career</div>
+        </div>
+        <div class="hero-actions">
+          <a href="#brochure" class="btn btn-primary">Download Brochure <span aria-hidden="true">&rarr;</span></a>
+          <a href="#video" class="watch-story">
+            <span class="play-dot"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            Watch Our Story
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <img src="assets/images/hero-student.png" alt="ZSkillup student building a global finance career" loading="eager">
+        </div>
+        <div class="brochure-card" id="brochure">
+          <div class="brochure-head">
+            <span class="icon-badge" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M6 21h12a1 1 0 0 0 1-1V7l-5-4H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1Z"/><path d="M9 13h6M9 17h6"/></svg></span>
+            <div>
+              <h3>Download Program Brochure</h3>
+              <div class="sub">Take the first step towards your global career</div>
+            </div>
+          </div>
+          <form data-brochure-form>
+            <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6"/></svg><input type="text" placeholder="Your Name" required></div>
+            <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><input type="email" placeholder="Email Address" required></div>
+            <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4.5 4h3.4l1.4 4.4L7 10.4a12 12 0 0 0 6.6 6.6l2-2.3 4.4 1.4V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3 5.6 1.5 1.5 0 0 1 4.5 4Z"/></svg><input type="tel" placeholder="Phone Number" required></div>
+            <div class="field">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 8.5 12 4l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11v4.5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V11"/></svg>
+              <select required>
+                <option value="" selected disabled>Select your current academic stage</option>
+                <option>Class 12 / PUC</option>
+                <option>B.Com Pursuing</option>
+                <option>B.Com Completed</option>
+                <option>Other Graduate</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Get Brochure <span aria-hidden="true">&rarr;</span></button>
+          </form>
+          <div class="privacy-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            We respect your privacy. Your information will never be shared.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint"><span>Scroll to explore</span></div>
+  </section>
+
+  <!-- ============ ABOUT THE PROGRAM ============ -->
+  <section class="section" id="program">
+    <div class="container">
+      <div class="journey-top">
+        <div>
+          <div class="eyebrow">Your Journey. Our Support.</div>
+          <h2>From Learning to <span class="accent-red">Leading</span></h2>
+          <p class="mt-8">A clear path from B.Com to a globally recognised finance career.</p>
+        </div>
+      </div>
+      <div class="journey-steps">
+        <div class="journey-step">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5 12 3l9 2.5v11L12 19l-9-2.5Z"/><path d="M12 3v16"/></svg></span>
+          <h4>Build Your Foundation</h4>
+          <p>Complete your B.Com with integrated ACCA learning.</p>
+        </div>
+        <div class="journey-step">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.4M12 18.6V21M21 12h-2.4M5.4 12H3M18 6l-1.7 1.7M7.7 16.3 6 18M18 18l-1.7-1.7M7.7 7.7 6 6"/></svg></span>
+          <h4>Gain Practical Skills</h4>
+          <p>Learn from industry experts and real-world case studies.</p>
+        </div>
+        <div class="journey-step">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></span>
+          <h4>Get Global Exposure</h4>
+          <p>Access opportunities across 180+ countries.</p>
+        </div>
+        <div class="journey-step">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M6 4h12v3a6 6 0 0 1-12 0V4Z"/><path d="M6 6H4a2 2 0 0 0 2 4M18 6h2a2 2 0 0 1-2 4"/></svg></span>
+          <h4>Step into a Brighter Future</h4>
+          <p>Build a successful career in finance and beyond.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:32px;">
+    <div class="container">
+      <div class="eyebrow">About the Program</div>
+      <h2>Choose Your <span class="accent-red">Program</span></h2>
+      <p class="mt-8" style="max-width:640px;">Select a program to view the detailed semester-wise curriculum and see how you'll build your skills, qualifications and career readiness.</p>
+
+      <div class="grid-3 mt-32">
+        <a href="curriculum/bcom-acca/" class="program-card">
+          <div class="top-row">
+            <span class="mark navy"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 12 4l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11v4.5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V11"/></svg></span>
+            <span class="badge">Most Popular</span>
+          </div>
+          <h3>B.Com + ACCA</h3>
+          <div class="sub">Global Employability Program</div>
+          <p class="desc">A complete academic and professional pathway combining your B.Com degree with ACCA and industry-relevant skills.</p>
+          <div class="go">View Curriculum <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a href="curriculum/acca-only/" class="program-card">
+          <div class="top-row">
+            <span class="mark red">ACCA</span>
+          </div>
+          <h3>ACCA Only Program</h3>
+          <div class="sub">For B.Com Undergoing or Completed</div>
+          <p class="desc">Fast-track your career with ACCA and gain international finance expertise.</p>
+          <div class="go">View Curriculum <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+
+        <a href="curriculum/acca-fast-track/" class="program-card">
+          <div class="top-row">
+            <span class="mark doc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M6 21h12a1 1 0 0 0 1-1V7l-5-4H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1Z"/></svg></span>
+          </div>
+          <h3>ACCA Fast Track</h3>
+          <div class="sub">ACCA preparation + career-ready skills</div>
+          <p class="desc">A focused, accelerated path through the ACCA qualification alongside ZSkillup's employability classes.</p>
+          <div class="go">View Curriculum <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEES ============ -->
+  <section class="section section--alt" id="fees">
+    <div class="container">
+      <div class="eyebrow">Fees</div>
+      <h2>Flexible Learning.<br><span class="accent-red">A Brighter Future.</span></h2>
+      <p class="mt-8" style="max-width:640px;">Choose a program, explore the fee details and payment options. Invest in industry-relevant skills and open doors to global opportunities.</p>
+
+      <div class="fee-tabs pill-group mt-32" role="tablist" aria-label="Jump to a program's fee card">
+        <button class="pill active" data-fee-tab="fee-bcom">B.Com + ACCA</button>
+        <button class="pill" data-fee-tab="fee-only">ACCA Only</button>
+        <button class="pill" data-fee-tab="fee-fast">ACCA Fast Track</button>
+      </div>
+
+      <div class="fees-layout">
+        <div class="fee-cards">
+          <div class="fee-card highlight" id="fee-bcom">
+            <span class="most-popular">Most Popular</span>
+            <span class="icon-badge navy mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 12 4l9 4.5-9 4.5-9-4.5Z"/></svg></span>
+            <h3>B.Com + ACCA</h3>
+            <div class="sub">Global Employability Program</div>
+            <div class="fee-price-row">Program Fees</div>
+            <div class="fee-price">₹ XX,XXX <span class="tba">(To be announced)</span></div>
+            <a href="#brochure" class="btn btn-navy btn-block">Get Fee Details <span aria-hidden="true">&rarr;</span></a>
+          </div>
+
+          <div class="fee-card" id="fee-only">
+            <span class="icon-badge mark" style="background:var(--bg-red-tint);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V6a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/></svg></span>
+            <h3>ACCA Only Program</h3>
+            <div class="sub">For B.Com Undergoing or Completed</div>
+            <div class="fee-price-row">Program Fees</div>
+            <div class="fee-price">₹ XX,XXX <span class="tba">(To be announced)</span></div>
+            <a href="#brochure" class="btn btn-outline btn-block">Get Fee Details <span aria-hidden="true">&rarr;</span></a>
+          </div>
+
+          <div class="fee-card" id="fee-fast">
+            <span class="icon-badge mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M6 21h12a1 1 0 0 0 1-1V7l-5-4H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1Z"/></svg></span>
+            <h3>ACCA Fast Track</h3>
+            <div class="sub">ACCA preparation + career-ready skills</div>
+            <div class="fee-price-row">Program Fees</div>
+            <div class="fee-price">₹ XX,XXX <span class="tba">(To be announced)</span></div>
+            <a href="#brochure" class="btn btn-outline btn-block">Get Fee Details <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="value-box">
+            <h3>More Value<br>for Your Investment</h3>
+            <p>Your fee includes everything you need for a successful learning journey.</p>
+            <ul class="value-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Structured curriculum</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Learning resources &amp; tools</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Mentorship &amp; career guidance</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Placement support</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>Flexible payment options</li>
+            </ul>
+          </div>
+          <div class="have-questions">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4Z"/><path d="M9 9h6M9 12h4"/></svg></span>
+            <div>
+              <h4>Have questions?</h4>
+              <p>Talk to our team for personalized guidance on fees and payment options.</p>
+              <a href="faqs/#talk-to-team" class="btn btn-outline btn-sm">Talk to Our Team <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO ============ -->
+  <section class="section video-section" id="video">
+    <div class="container video-layout">
+      <div class="video-copy">
+        <div class="eyebrow">Real Stories. Real Impact.</div>
+        <h2>See how <span class="accent-red">B.Com + ACCA</span> creates global opportunities</h2>
+        <p class="lead2">Watch this short video to hear how ACCA helps you build practical skills, gain international recognition, and access exciting career paths.</p>
+        <div class="video-actions">
+          <button class="btn btn-primary" data-play-video>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch Video
+          </button>
+          <span class="video-duration">02:18</span>
+        </div>
+      </div>
+      <div class="video-frame">
+        <div class="video-screen">
+          <img src="assets/images/video-thumb.png" alt="B.Com + ACCA student story video thumbnail">
+          <div class="overlay-copy">B.Com + ACCA<br>More Opportunities.<br>A Brighter Future.</div>
+          <button class="play-btn" data-play-video aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="video-toast" data-video-toast>Full video coming soon</div>
+        </div>
+        <div class="video-notch"><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TWO STRENGTHS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="strengths-top">
+        <div>
+          <div class="eyebrow">Two Strengths. Endless Possibilities.</div>
+          <h2>Global recognition. <span class="accent-red">Guided by experts.</span></h2>
+          <p class="mt-8" style="max-width:600px;">A powerful combination that gives you the knowledge, credentials and support to build a future without limits.</p>
+        </div>
+        <div class="strengths-side-note">Same Knowledge.<br>A Brighter Tomorrow.</div>
+      </div>
+
+      <div class="grid-2 mt-32">
+        <div class="strength-card">
+          <div class="who">WHY <b>ACCA?</b></div>
+          <h3>A globally respected qualification</h3>
+          <p class="desc">ACCA (Association of Chartered Certified Accountants) is recognised in 180+ countries and opens doors to opportunities in finance, accounting, audit and beyond.</p>
+          <div class="strength-grid">
+            <div class="strength-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></span><span>Recognised in 180+ countries</span></div>
+            <div class="strength-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span><span>Wide career opportunities</span></div>
+            <div class="strength-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><span>Builds future-ready skills</span></div>
+            <div class="strength-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2.5 19.5c0-3.4 2.9-5.8 6.5-5.8s6.5 2.4 6.5 5.8"/><circle cx="17.5" cy="8.5" r="2.3"/><path d="M15.8 13.6c2.7.4 4.5 2.3 4.5 5.4"/></svg></span><span>Be part of a global community</span></div>
+          </div>
+        </div>
+
+        <div class="strength-card zskillup">
+          <div class="who">WHY <b>ZSKILLUP?</b></div>
+          <h3>Your learning partner for real growth</h3>
+          <p class="desc">Zskillup makes your ACCA journey simpler, smarter and more effective with expert guidance, structured learning and end-to-end support.</p>
+          <div class="strength-grid">
+            <div class="strength-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 12 4l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11v4.5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V11"/></svg></span><span>Industry-experienced faculty</span></div>
+            <div class="strength-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v14"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H19"/></svg></span><span>Structured &amp; practical learning</span></div>
+            <div class="strength-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></span><span>Additional learning support</span></div>
+            <div class="strength-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><span>Career guidance &amp; mentorship</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ (populated below) ============ -->
+  <section class="section section--alt" id="faqs-home" data-faq-root>
+    <div class="container">
+      <div class="eyebrow text-center" style="justify-content:center;">FAQs</div>
+      <h2 class="text-center">Frequently Asked <span class="accent-red">Questions</span></h2>
+      <p class="mt-8 text-center" style="max-width:600px;">Everything you need to know about ACCA and the ZSkillup programs.</p>
+      <div class="mt-32" data-faq-mount></div>
+      <p class="text-center mt-24"><a href="faqs/" class="btn btn-outline">View All FAQs <span aria-hidden="true">&rarr;</span></a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer-root">
+  <!-- footer injected by /assets/js/footer.js on load; static fallback below for no-JS -->
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/footer.js" data-depth="0"></script>
+<script src="assets/js/faq-data.js"></script>
+<script src="assets/js/faq.js"></script>
+<script>
+// Fee tabs: smooth-scroll + highlight the corresponding card (real, functional interaction)
+document.querySelectorAll('[data-fee-tab]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('[data-fee-tab]').forEach(function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var target = document.getElementById(btn.getAttribute('data-fee-tab'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+
+// Video play button: no video file ships in this repo, so give honest feedback instead of a dead click
+document.querySelectorAll('[data-play-video]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var toast = document.querySelector('[data-video-toast]');
+    if (!toast) return;
+    toast.classList.add('show');
+    clearTimeout(window.__vtT);
+    window.__vtT = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+  });
+});
+
+// Homepage FAQ preview: render first 5 questions (one per category, plus one extra) with shared accordion
+if (window.ZFAQ_DATA && document.querySelector('[data-faq-mount]')) {
+  ZFAQRender(document.querySelector('[data-faq-mount]'), { preview: true, limit: 6 });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Career Outcomes — ZSkillup</title>
+<meta name="description" content="See where ZSkillup learners work, the career pathways ACCA opens up, and the hiring partners who recruit our students.">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.career-hero { background: var(--navy); position: relative; overflow: hidden; padding: 64px 0 56px; }
+.career-hero::before { content:""; position:absolute; inset:0; background: radial-gradient(1000px 500px at 15% 0%, rgba(227,6,19,.18), transparent 60%), radial-gradient(800px 500px at 95% 30%, rgba(37,99,235,.16), transparent 60%); }
+.career-hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+.career-hero h1 { color: #fff; }
+.career-hero .accent-red { color: #ff5561; }
+.career-hero p.lead { color: rgba(255,255,255,.72); font-size: 16.5px; max-width: 520px; margin-top: 16px; }
+.career-hero-actions { display: flex; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
+.career-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 40px; }
+.career-stat b { display:block; font-size: 26px; font-weight: 900; color: #fff; }
+.career-stat span { font-size: 12.5px; color: rgba(255,255,255,.6); }
+.career-hero-photo { border-radius: 24px; overflow: hidden; background: linear-gradient(160deg,#1b2c50,#0a1931); aspect-ratio: 4/4.4; display:flex; align-items:flex-end; position:relative; }
+.career-hero-photo img { width:100%; height:100%; object-fit: contain; object-position: center bottom; }
+.career-hero-photo .badge-float { position:absolute; left:18px; bottom:18px; background:#fff; border-radius: 14px; padding: 12px 16px; display:flex; gap:10px; align-items:center; box-shadow: var(--shadow-card); max-width: 220px; }
+.career-hero-photo .badge-float svg { width:20px; height:20px; stroke: var(--red); flex-shrink:0; }
+.career-hero-photo .badge-float span { font-size: 12px; font-weight: 700; color: var(--navy); line-height:1.3; }
+@media (max-width: 900px){ .career-hero-grid{grid-template-columns:1fr;} .career-stats{grid-template-columns:1fr 1fr;} }
+
+.learners-band { background: var(--bg-blue-tint); }
+.learners-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 32px; }
+.learner-card { background:#fff; border-radius: var(--radius-lg); padding: 26px; box-shadow: var(--shadow-card); }
+.learner-card .icon-badge { background: var(--bg-red-tint); color: var(--red); }
+@media (max-width: 900px){ .learners-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width: 560px){ .learners-grid{grid-template-columns:1fr;} }
+
+.pathways-grid { display:grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 32px; }
+.pathway-card { background:#fff; border:1.5px solid var(--gray-200); border-radius: var(--radius-lg); padding: 22px; transition: box-shadow .2s ease, border-color .2s ease; }
+.pathway-card:hover { border-color: var(--red); box-shadow: var(--shadow-card); }
+.pathway-card .icon-badge.round { width:42px; height:42px; margin-bottom:14px; }
+.pathway-card h3 { font-size: 15.5px; }
+.pathway-card p { font-size: 13px; margin-top: 8px; }
+.pathway-card .arrow { margin-top: 14px; color: var(--red); font-weight: 800; }
+@media (max-width: 980px){ .pathways-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width: 560px){ .pathways-grid{grid-template-columns:1fr;} }
+
+.partners-top { display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; }
+.partners-row { display:flex; flex-wrap:wrap; gap: 14px; margin-top: 32px; }
+.partner-chip { border:1.5px solid var(--gray-200); border-radius: var(--radius-md); padding: 18px 26px; font-weight: 800; font-size: 16px; color: var(--gray-700); letter-spacing: -0.01em; transition: border-color .15s ease, color .15s ease; }
+.partner-chip:hover { border-color: var(--navy); color: var(--navy); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-site-header>
+  <div class="container nav-row">
+    <a href="../" class="brand" aria-label="ZSkillup home">
+      <span class="brand-mark">Z</span>
+      <span class="stack"><span class="brand-word">ZSKILLUP</span><span class="brand-tag">ACCA GLOBAL PROGRAMS</span></span>
+    </a>
+    <nav class="site-nav" data-site-nav>
+      <ul class="nav-links">
+        <li><a href="../">Home</a></li>
+        <li><a href="../#program">Program</a></li>
+        <li><a href="../#fees">Fees</a></li>
+        <li><a href="../curriculum/bcom-acca/">Curriculum</a></li>
+        <li><a href="./" class="active">Career</a></li>
+        <li><a href="../faqs/">FAQs</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="../#brochure" class="btn btn-primary btn-sm">Download Brochure <span aria-hidden="true">&rarr;</span></a>
+      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="career-hero">
+    <div class="container career-hero-grid">
+      <div>
+        <div class="eyebrow" style="color:#ff9ea3;">Your Career, Global Opportunities</div>
+        <h1 style="color:#fff;">From ACCA to a <span class="accent-red">Global Career</span></h1>
+        <p class="lead">Gain globally recognized qualifications, real-world skills and career support to step into opportunities across industries and countries.</p>
+        <div class="career-hero-actions">
+          <a href="#learners-work" class="btn btn-primary">Explore Career Opportunities <span aria-hidden="true">&rarr;</span></a>
+          <a href="../faqs/#talk-to-team" class="btn btn-outline-white">Talk to a Career Advisor</a>
+        </div>
+        <div class="career-stats">
+          <div class="career-stat"><b>150+</b><span>Hiring Partners</span></div>
+          <div class="career-stat"><b>350+</b><span>Placements</span></div>
+          <div class="career-stat"><b>19 LPA</b><span>Highest Package</span></div>
+          <div class="career-stat"><b>5.6 LPA</b><span>Average Package</span></div>
+        </div>
+      </div>
+      <div class="career-hero-photo">
+        <img src="../assets/images/hero-student.png" alt="ZSkillup graduate ready for a global finance career">
+        <div class="badge-float">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
+          <span>Work Anywhere. Build a Career Without Limits.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE OUR LEARNERS WORK -->
+  <section class="section learners-band" id="learners-work">
+    <div class="container">
+      <h2>Where our learners <span class="accent-red">work</span></h2>
+      <p class="mt-8" style="max-width:560px;">Our students are placed in top companies in India and abroad.</p>
+      <div class="learners-grid">
+        <div class="learner-card">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a1 1 0 0 1 1-1h6v17"/><path d="M11 21V9h7a1 1 0 0 1 1 1v11"/><path d="M7 8h.01M7 11h.01M7 14h.01M14 13h.01M14 16h.01"/></svg></span>
+          <h3>Global Capability Centres</h3>
+          <p>For leading multinational companies (MNCs)</p>
+        </div>
+        <div class="learner-card">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6.5V12c0 4.6 3.2 8.4 8 9 4.8-.6 8-4.4 8-9V6.5L12 3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>Big 4 Firms</h3>
+          <p>Audit, tax, advisory and consulting roles</p>
+        </div>
+        <div class="learner-card">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
+          <h3>FMCGs</h3>
+          <p>Finance, commercial and business partnering roles</p>
+        </div>
+        <div class="learner-card">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span>
+          <h3>IT &amp; Technology</h3>
+          <p>Finance operations, FP&amp;A and business analytics roles</p>
+        </div>
+        <div class="learner-card">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3.2"/><path d="M2 20c0-3.3 2.7-5.6 6-5.6s6 2.3 6 5.6"/><path d="M15 9.5a3 3 0 1 0 0-6"/><path d="M17 14.2c2.4.5 4 2.4 4 5.3"/></svg></span>
+          <h3>Consulting</h3>
+          <p>Risk, transaction and management consulting roles</p>
+        </div>
+        <div class="learner-card">
+          <span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg></span>
+          <h3>MNC Finance Teams</h3>
+          <p>Financial planning, analysis and strategic finance roles</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE CAN ACCA TAKE YOU -->
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow">Career Pathways</div>
+      <h2>Where Can ACCA <span class="accent-red">Take You?</span></h2>
+      <p class="mt-8" style="max-width:640px;">An ACCA qualification opens doors to diverse roles across industries, giving you the flexibility to build a career that matches your interests and goals.</p>
+
+      <div class="pathways-grid">
+        <div class="pathway-card"><span class="icon-badge round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21h12a1 1 0 0 0 1-1V7l-5-4H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1Z"/><path d="M9 13h6M9 17h6"/></svg></span><h3>Financial Accountant</h3><p>Prepare financial statements, ensure compliance and support business decisions.</p><div class="arrow">&rarr;</div></div>
+        <div class="pathway-card"><span class="icon-badge round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><h3>Management Accountant</h3><p>Drive business performance through budgeting, forecasting and analysis.</p><div class="arrow">&rarr;</div></div>
+        <div class="pathway-card"><span class="icon-badge round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Audit Assistant</h3><p>Play a key role in risk assessment and assurance across global organizations.</p><div class="arrow">&rarr;</div></div>
+        <div class="pathway-card"><span class="icon-badge round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></span><h3>UK Taxation Roles</h3><p>Work on direct and indirect taxation for clients in the UK and international markets.</p><div class="arrow">&rarr;</div></div>
+        <div class="pathway-card"><span class="icon-badge round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><h3>Forensic Audit</h3><p>Investigate financial frauds and support litigation with expert analysis.</p><div class="arrow">&rarr;</div></div>
+        <div class="pathway-card"><span class="icon-badge round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v14"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H19"/></svg></span><h3>Transfer Pricing</h3><p>Help businesses navigate cross-border tax regulations and ensure compliance.</p><div class="arrow">&rarr;</div></div>
+        <div class="pathway-card"><span class="icon-badge round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><h3>Corporate Finance</h3><p>Involved in mergers, acquisitions, financial modeling and strategic advisory.</p><div class="arrow">&rarr;</div></div>
+        <div class="pathway-card"><span class="icon-badge round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></span><h3>Finance Operations</h3><p>Ensure smooth financial processes and support business growth.</p><div class="arrow">&rarr;</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARN TODAY WORK TOMORROW -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="partners-top">
+        <div>
+          <div class="eyebrow">Hiring Partners</div>
+          <h2>Learn Today, Work Tomorrow.</h2>
+          <p class="mt-8" style="max-width:560px;">Our students go on to work with leading global organizations, thanks to a strong academic foundation and practical exposure.</p>
+        </div>
+        <a href="../faqs/#talk-to-team" class="btn btn-outline btn-sm" style="flex-shrink:0;">View All Placement Partners <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="partners-row">
+        <span class="partner-chip">Deloitte</span>
+        <span class="partner-chip">PwC</span>
+        <span class="partner-chip">EY</span>
+        <span class="partner-chip">KPMG</span>
+        <span class="partner-chip">Amazon</span>
+        <span class="partner-chip">Accenture</span>
+        <span class="partner-chip">IBM</span>
+        <span class="partner-chip">Genpact</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="footer-root"></footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/footer.js" data-depth="1"></script>
+</body>
+</html>
