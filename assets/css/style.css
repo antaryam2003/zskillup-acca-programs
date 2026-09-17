@@ -402,7 +402,7 @@ p { line-height: 1.65; color: var(--gray-600); margin: 0; }
 /* =========================================================
    FAQ — shared components (homepage preview + /faqs/ page)
    ========================================================= */
-.faq-tabs { flex-wrap: wrap; }
+.faq-tabs { display: flex; flex-wrap: wrap; justify-content: center; width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; }
 .faq-tabs .pill.active { background: var(--red); }
 .faq-bullets { padding: 0 20px 20px 62px; margin: -14px 0 0; list-style: disc; display: flex; flex-direction: column; gap: 6px; }
 .faq-bullets li { font-size: 14px; color: var(--gray-600); line-height: 1.5; }
