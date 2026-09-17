@@ -24,37 +24,46 @@ body.home .site-header:not(.is-scrolled) .nav-links a:hover,
 body.home .site-header:not(.is-scrolled) .nav-links a.active { color: #fff; }
 body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
 
-.hero { position: relative; background: var(--navy); overflow: hidden; margin-top: -76px; }
+.hero {
+  position: relative; overflow: hidden; margin-top: -76px; background: var(--navy);
+  background-image: url('assets/images/hero-bg.png');
+  background-repeat: no-repeat; background-size: cover; background-position: center center;
+  aspect-ratio: 1864 / 844; min-height: 540px; max-height: 780px;
+  display: flex; flex-direction: column; justify-content: center;
+}
 .hero::before {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(1100px 500px at 20% 0%, rgba(227,6,19,.16), transparent 60%),
-              radial-gradient(900px 500px at 90% 10%, rgba(37,99,235,.16), transparent 60%);
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(100deg, rgba(6,14,30,0) 32%, rgba(6,14,30,.22) 48%, rgba(6,14,30,.55) 76%, rgba(6,14,30,.68) 100%),
+              linear-gradient(to top, rgba(6,14,30,.55) 0%, rgba(6,14,30,0) 34%),
+              linear-gradient(to bottom, rgba(6,14,30,.5) 0%, rgba(6,14,30,0) 22%);
 }
 .hero-inner {
-  position: relative; display: grid; grid-template-columns: 370px 1fr 330px; align-items: center; column-gap: 24px;
-  padding-top: 118px; padding-bottom: 64px; box-sizing: border-box;
+  position: relative; z-index: 2; display: flex; align-items: center; gap: 32px;
+  padding-top: 76px; padding-right: 6%; box-sizing: border-box; width: 100%;
 }
 .hero-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .22em; color: #ffb3b8; text-transform: uppercase; margin-bottom: 16px; }
-.hero-copy { max-width: 400px; }
-.hero h1 { color: #fff; font-size: clamp(28px, 3vw, 38px); }
+.hero-copy { margin-left: 40%; max-width: 420px; flex-shrink: 1; min-width: 0; }
+.hero h1 { color: #fff; font-size: clamp(28px, 3vw, 38px); text-shadow: 0 2px 18px rgba(0,0,0,.35); }
 .hero h1 .accent-red { color: #ff5561; }
-.hero p.lead { color: rgba(255,255,255,.72); font-size: 15.5px; margin-top: 16px; }
+.hero p.lead { color: rgba(255,255,255,.85); font-size: 15.5px; margin-top: 16px; text-shadow: 0 1px 10px rgba(0,0,0,.35); }
 .hero-benefits { display: flex; margin-top: 26px; }
-.hero-benefit { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.92); font-size: 12px; font-weight: 600; line-height: 1.3; padding: 0 12px; border-left: 1px solid rgba(255,255,255,.18); }
+.hero-benefit { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 12px; font-weight: 600; line-height: 1.3; padding: 0 12px; border-left: 1px solid rgba(255,255,255,.3); text-shadow: 0 1px 8px rgba(0,0,0,.4); }
 .hero-benefit:first-child { padding-left: 0; border-left: none; }
-.hero-benefit .ico { width: 32px; height: 32px; border-radius: 999px; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hero-benefit .ico { width: 32px; height: 32px; border-radius: 999px; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,.25); }
 .hero-benefit svg { width: 16px; height: 16px; stroke: var(--navy); }
 
-.hero-media { position: relative; align-self: stretch; display: flex; align-items: flex-end; justify-content: center; }
-.hero-media img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
-.hero-watch { position: absolute; left: 0; bottom: 20%; display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 700; font-size: 14.5px; z-index: 2; }
-.play-dot { width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; transition: background .15s ease; flex-shrink: 0; }
-.hero-watch:hover .play-dot { background: rgba(255,255,255,.28); }
+.hero-watch {
+  position: absolute; left: max(24px, calc((100% - 1280px) / 2 + 40px)); bottom: 9%;
+  display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 700; font-size: 14.5px; z-index: 2;
+  text-shadow: 0 1px 8px rgba(0,0,0,.4);
+}
+.play-dot { width: 46px; height: 46px; border-radius: 999px; background: rgba(10,20,40,.45); border: 1px solid rgba(255,255,255,.5); display: flex; align-items: center; justify-content: center; transition: background .15s ease; flex-shrink: 0; backdrop-filter: blur(2px); }
+.hero-watch:hover .play-dot { background: rgba(10,20,40,.65); }
 .play-dot svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
 
 .brochure-card {
-  background: #fff; border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 24px 60px rgba(0,0,0,.35);
-  position: relative; z-index: 2; align-self: center;
+  background: #fff; border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  position: relative; z-index: 2; margin-left: auto; width: 320px; flex-shrink: 0;
 }
 .brochure-card h3 { font-size: 16px; }
 .brochure-card .sub { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
@@ -69,23 +78,30 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
 .privacy-note { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--gray-500); margin-top: 12px; }
 .privacy-note svg { width: 14px; height: 14px; margin-top: 1px; flex-shrink: 0; }
 
-.scroll-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); text-align: center; z-index: 2; }
-.scroll-hint span { display: block; font-size: 10.5px; color: rgba(255,255,255,.55); letter-spacing: .1em; text-transform: uppercase; margin-top: 8px; }
+.scroll-hint { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); text-align: center; z-index: 2; }
+.scroll-hint span { display: block; font-size: 10.5px; color: rgba(255,255,255,.7); letter-spacing: .1em; text-transform: uppercase; margin-top: 8px; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
 
-@media (max-width: 1080px) {
-  .hero-inner { grid-template-columns: 280px 1fr 300px; column-gap: 18px; padding-top: 110px; padding-bottom: 60px; }
-  .hero-copy { max-width: 320px; }
+@media (max-width: 1450px) {
+  .hero-inner { padding-right: 9%; }
+  .hero-copy { margin-left: 38%; max-width: 380px; }
+  .brochure-card { width: 296px; }
 }
-@media (max-width: 900px) {
-  .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 104px; padding-bottom: 56px; gap: 28px; }
-  .hero-copy { order: 1; width: 100%; max-width: 480px; box-sizing: border-box; }
+@media (max-width: 1240px) {
+  .hero-inner { padding-right: 11%; }
+  .hero-copy { margin-left: 36%; max-width: 340px; }
+  .brochure-card { width: 280px; }
+}
+@media (max-width: 1100px) {
+  .hero { aspect-ratio: auto; min-height: 0; max-height: none; background-position: 34% center; }
+  .hero-inner { flex-direction: column; align-items: center; text-align: center; padding-top: 100px; padding-right: 0; padding-bottom: 40px; gap: 28px; }
+  .hero-copy { order: 1; margin-left: 0; width: 100%; max-width: 480px; box-sizing: border-box; }
   .hero-benefits { justify-content: center; flex-wrap: wrap; row-gap: 14px; }
-  .hero-media { order: 2; align-self: center; height: 320px; width: 260px; }
-  .hero-watch { left: 50%; transform: translateX(-50%); bottom: 10px; }
-  .brochure-card { order: 3; width: 100%; max-width: 420px; box-sizing: border-box; }
+  .hero-watch { position: static; transform: none; justify-content: center; margin-top: 4px; }
+  .brochure-card { order: 3; width: 100%; max-width: 420px; box-sizing: border-box; margin-left: 0; }
+  .scroll-hint { position: static; transform: none; margin: 28px 0 12px; }
 }
-@media (max-width: 480px) {
-  .hero-media { height: 240px; width: 200px; }
+@media (max-width: 640px) {
+  .hero { background-position: 26% center; }
   .hero-benefit { font-size: 11.5px; padding: 0 8px; }
 }
 
@@ -230,14 +246,6 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="container hero-inner">
-      <div class="hero-media">
-        <img src="assets/images/hero-student.png" alt="ZSkillup student building a global finance career" loading="eager">
-        <a href="#video" class="hero-watch">
-          <span class="play-dot"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-          Watch Our Story
-        </a>
-      </div>
-
       <div class="hero-copy">
         <div class="hero-eyebrow">From Classrooms to a Global Career</div>
         <h1>Your <span class="accent-red">B.Com+ACCA</span><br>A Global Career Awaits</h1>
@@ -279,6 +287,10 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
         </div>
       </div>
     </div>
+    <a href="#video" class="hero-watch">
+      <span class="play-dot"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      Watch Our Story
+    </a>
     <div class="scroll-hint">
       <svg width="18" height="28" viewBox="0 0 18 28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.4"><rect x="1" y="1" width="16" height="26" rx="8"/><circle cx="9" cy="9" r="2" fill="rgba(255,255,255,.6)" stroke="none"/></svg>
       <span>Scroll to explore</span>
