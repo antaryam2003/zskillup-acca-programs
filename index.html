@@ -8,38 +8,54 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
 /* ---- Homepage-only styles ---- */
-.hero { position: relative; background: var(--navy); overflow: hidden; padding: 56px 0 0; }
+
+/* Nav "Download Brochure" button: show a shorter label on narrow screens so it
+   never overflows the header (the shared stylesheet already hides
+   .btn-label-full at <=920px; this just supplies the fallback label). */
+.btn-label-short { display: none; }
+@media (max-width: 920px) { .btn-label-short { display: inline; } }
+
+/* Hero nav sits transparently over the hero image until the user scrolls */
+body.home .site-header:not(.is-scrolled) { background: transparent; border-bottom-color: transparent; }
+body.home .site-header:not(.is-scrolled) .brand-word { color: #fff; }
+body.home .site-header:not(.is-scrolled) .brand-tag { color: rgba(255,255,255,.65); }
+body.home .site-header:not(.is-scrolled) .nav-links { color: rgba(255,255,255,.88); }
+body.home .site-header:not(.is-scrolled) .nav-links a:hover,
+body.home .site-header:not(.is-scrolled) .nav-links a.active { color: #fff; }
+body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
+
+.hero { position: relative; background: var(--navy); overflow: hidden; margin-top: -76px; }
 .hero::before {
   content: ""; position: absolute; inset: 0;
   background: radial-gradient(1100px 500px at 20% 0%, rgba(227,6,19,.16), transparent 60%),
               radial-gradient(900px 500px at 90% 10%, rgba(37,99,235,.16), transparent 60%);
 }
-.hero-grid { position: relative; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; padding-bottom: 64px; }
-.hero-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .22em; color: #ffb3b8; text-transform: uppercase; margin-bottom: 18px; }
-.hero h1 { color: #fff; }
+.hero-inner {
+  position: relative; display: grid; grid-template-columns: 370px 1fr 330px; align-items: center; column-gap: 24px;
+  padding-top: 118px; padding-bottom: 64px; box-sizing: border-box;
+}
+.hero-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .22em; color: #ffb3b8; text-transform: uppercase; margin-bottom: 16px; }
+.hero-copy { max-width: 400px; }
+.hero h1 { color: #fff; font-size: clamp(28px, 3vw, 38px); }
 .hero h1 .accent-red { color: #ff5561; }
-.hero p.lead { color: rgba(255,255,255,.72); font-size: 17px; max-width: 520px; margin-top: 18px; }
-.hero-benefits { display: flex; gap: 22px; margin-top: 28px; flex-wrap: wrap; }
-.hero-benefit { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.85); font-size: 13.5px; font-weight: 600; }
-.hero-benefit .ico { width: 34px; height: 34px; border-radius: 999px; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.hero-benefit svg { width: 17px; height: 17px; stroke: #fff; }
-.hero-actions { display: flex; align-items: center; gap: 18px; margin-top: 32px; flex-wrap: wrap; }
-.watch-story { display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 700; font-size: 14.5px; }
-.play-dot { width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; transition: background .15s ease; }
-.watch-story:hover .play-dot { background: rgba(255,255,255,.24); }
+.hero p.lead { color: rgba(255,255,255,.72); font-size: 15.5px; margin-top: 16px; }
+.hero-benefits { display: flex; margin-top: 26px; }
+.hero-benefit { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.92); font-size: 12px; font-weight: 600; line-height: 1.3; padding: 0 12px; border-left: 1px solid rgba(255,255,255,.18); }
+.hero-benefit:first-child { padding-left: 0; border-left: none; }
+.hero-benefit .ico { width: 32px; height: 32px; border-radius: 999px; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hero-benefit svg { width: 16px; height: 16px; stroke: var(--navy); }
+
+.hero-media { position: relative; align-self: stretch; display: flex; align-items: flex-end; justify-content: center; }
+.hero-media img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.hero-watch { position: absolute; left: 0; bottom: 20%; display: flex; align-items: center; gap: 12px; color: #fff; font-weight: 700; font-size: 14.5px; z-index: 2; }
+.play-dot { width: 46px; height: 46px; border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; transition: background .15s ease; flex-shrink: 0; }
+.hero-watch:hover .play-dot { background: rgba(255,255,255,.28); }
 .play-dot svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
 
-.hero-photo-wrap { position: relative; }
-.hero-photo { position: relative; border-radius: 28px; overflow: hidden; background: linear-gradient(160deg,#1b2c50,#0a1931); aspect-ratio: 4/4.6; display: flex; align-items: flex-end; }
-.hero-photo img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
-.hero-photo .quote-chip {
-  position: absolute; left: 18px; top: 22px; color: #fff; font-family: "Segoe Print","Comic Sans MS",cursive; font-size: 15px; line-height: 1.35; opacity: .9;
-}
 .brochure-card {
-  background: #fff; border-radius: var(--radius-lg); padding: 26px; box-shadow: 0 24px 60px rgba(0,0,0,.35);
-  margin-top: -70px; position: relative; z-index: 2; margin-left: 6%; margin-right: -6%;
+  background: #fff; border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  position: relative; z-index: 2; align-self: center;
 }
-@media (max-width: 1180px) { .brochure-card { margin-left: 0; margin-right: 0; } }
 .brochure-card h3 { font-size: 16px; }
 .brochure-card .sub { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
 .brochure-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 18px; }
@@ -53,8 +69,25 @@
 .privacy-note { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--gray-500); margin-top: 12px; }
 .privacy-note svg { width: 14px; height: 14px; margin-top: 1px; flex-shrink: 0; }
 
-.scroll-hint { display: flex; justify-content: center; padding: 6px 0 18px; position: relative; }
-.scroll-hint span { font-size: 11px; color: rgba(255,255,255,.5); letter-spacing: .1em; text-transform: uppercase; position: absolute; top: 34px; }
+.scroll-hint { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); text-align: center; z-index: 2; }
+.scroll-hint span { display: block; font-size: 10.5px; color: rgba(255,255,255,.55); letter-spacing: .1em; text-transform: uppercase; margin-top: 8px; }
+
+@media (max-width: 1080px) {
+  .hero-inner { grid-template-columns: 280px 1fr 300px; column-gap: 18px; padding-top: 110px; padding-bottom: 60px; }
+  .hero-copy { max-width: 320px; }
+}
+@media (max-width: 900px) {
+  .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 104px; padding-bottom: 56px; gap: 28px; }
+  .hero-copy { order: 1; width: 100%; max-width: 480px; box-sizing: border-box; }
+  .hero-benefits { justify-content: center; flex-wrap: wrap; row-gap: 14px; }
+  .hero-media { order: 2; align-self: center; height: 320px; width: 260px; }
+  .hero-watch { left: 50%; transform: translateX(-50%); bottom: 10px; }
+  .brochure-card { order: 3; width: 100%; max-width: 420px; box-sizing: border-box; }
+}
+@media (max-width: 480px) {
+  .hero-media { height: 240px; width: 200px; }
+  .hero-benefit { font-size: 11.5px; padding: 0 8px; }
+}
 
 /* journey strip */
 .journey { padding: 56px 0 8px; }
@@ -162,7 +195,7 @@
 @media (max-width: 640px) { .strength-grid { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
-<body>
+<body class="home">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header" data-site-header>
@@ -185,7 +218,7 @@
       </ul>
     </nav>
     <div class="nav-cta">
-      <a href="#brochure" class="btn btn-primary btn-sm">Download Brochure <span aria-hidden="true">&rarr;</span></a>
+      <a href="#brochure" class="btn btn-primary btn-sm"><span class="btn-label-full">Download Brochure</span><span class="btn-label-short">Brochure</span> <span aria-hidden="true">&rarr;</span></a>
       <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -196,61 +229,60 @@
 <main id="main">
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="container hero-grid">
-      <div>
+    <div class="container hero-inner">
+      <div class="hero-media">
+        <img src="assets/images/hero-student.png" alt="ZSkillup student building a global finance career" loading="eager">
+        <a href="#video" class="hero-watch">
+          <span class="play-dot"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          Watch Our Story
+        </a>
+      </div>
+
+      <div class="hero-copy">
         <div class="hero-eyebrow">From Classrooms to a Global Career</div>
         <h1>Your <span class="accent-red">B.Com+ACCA</span><br>A Global Career Awaits</h1>
         <p class="lead">Gain international recognition, build in-demand skills, and unlock opportunities in finance across the world.</p>
         <div class="hero-benefits">
           <div class="hero-benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></span>Globally Recognised Qualification</div>
-          <div class="hero-benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>In-Demand Finance Skills</div>
-          <div class="hero-benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.6"/><path d="M15.7 14.2c2.9.4 4.8 2.4 4.8 5.6"/></svg></span>A Future-Ready Global Career</div>
-        </div>
-        <div class="hero-actions">
-          <a href="#brochure" class="btn btn-primary">Download Brochure <span aria-hidden="true">&rarr;</span></a>
-          <a href="#video" class="watch-story">
-            <span class="play-dot"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-            Watch Our Story
-          </a>
+          <div class="hero-benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>In&#8209;Demand Finance Skills</div>
+          <div class="hero-benefit"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.6"/><path d="M15.7 14.2c2.9.4 4.8 2.4 4.8 5.6"/></svg></span>A Future&#8209;Ready Global Career</div>
         </div>
       </div>
 
-      <div class="hero-photo-wrap">
-        <div class="hero-photo">
-          <img src="assets/images/hero-student.png" alt="ZSkillup student building a global finance career" loading="eager">
+      <div class="brochure-card" id="brochure">
+        <div class="brochure-head">
+          <span class="icon-badge" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M6 21h12a1 1 0 0 0 1-1V7l-5-4H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1Z"/><path d="M9 13h6M9 17h6"/></svg></span>
+          <div>
+            <h3>Download Program Brochure</h3>
+            <div class="sub">Take the first step towards your global career</div>
+          </div>
         </div>
-        <div class="brochure-card" id="brochure">
-          <div class="brochure-head">
-            <span class="icon-badge" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M6 21h12a1 1 0 0 0 1-1V7l-5-4H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1Z"/><path d="M9 13h6M9 17h6"/></svg></span>
-            <div>
-              <h3>Download Program Brochure</h3>
-              <div class="sub">Take the first step towards your global career</div>
-            </div>
+        <form data-brochure-form>
+          <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6"/></svg><input type="text" placeholder="Your Name" required></div>
+          <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><input type="email" placeholder="Email Address" required></div>
+          <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4.5 4h3.4l1.4 4.4L7 10.4a12 12 0 0 0 6.6 6.6l2-2.3 4.4 1.4V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3 5.6 1.5 1.5 0 0 1 4.5 4Z"/></svg><input type="tel" placeholder="Phone Number" required></div>
+          <div class="field">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 8.5 12 4l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11v4.5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V11"/></svg>
+            <select required>
+              <option value="" selected disabled>Select your current academic stage</option>
+              <option>Class 12 / PUC</option>
+              <option>B.Com Pursuing</option>
+              <option>B.Com Completed</option>
+              <option>Other Graduate</option>
+            </select>
           </div>
-          <form data-brochure-form>
-            <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6"/></svg><input type="text" placeholder="Your Name" required></div>
-            <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><input type="email" placeholder="Email Address" required></div>
-            <div class="field"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4.5 4h3.4l1.4 4.4L7 10.4a12 12 0 0 0 6.6 6.6l2-2.3 4.4 1.4V20a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3 5.6 1.5 1.5 0 0 1 4.5 4Z"/></svg><input type="tel" placeholder="Phone Number" required></div>
-            <div class="field">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 8.5 12 4l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11v4.5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V11"/></svg>
-              <select required>
-                <option value="" selected disabled>Select your current academic stage</option>
-                <option>Class 12 / PUC</option>
-                <option>B.Com Pursuing</option>
-                <option>B.Com Completed</option>
-                <option>Other Graduate</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Get Brochure <span aria-hidden="true">&rarr;</span></button>
-          </form>
-          <div class="privacy-note">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            We respect your privacy. Your information will never be shared.
-          </div>
+          <button type="submit" class="btn btn-primary btn-block">Get Brochure <span aria-hidden="true">&rarr;</span></button>
+        </form>
+        <div class="privacy-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          We respect your privacy. Your information will never be shared.
         </div>
       </div>
     </div>
-    <div class="scroll-hint"><span>Scroll to explore</span></div>
+    <div class="scroll-hint">
+      <svg width="18" height="28" viewBox="0 0 18 28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.4"><rect x="1" y="1" width="16" height="26" rx="8"/><circle cx="9" cy="9" r="2" fill="rgba(255,255,255,.6)" stroke="none"/></svg>
+      <span>Scroll to explore</span>
+    </div>
   </section>
 
   <!-- ============ ABOUT THE PROGRAM ============ -->
