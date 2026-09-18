@@ -142,7 +142,6 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
 
 /* fees */
 .fees-layout { display: grid; grid-template-columns: 1fr 320px; gap: 28px; align-items: start; margin-top: 32px; }
-.fee-tabs { margin-bottom: 24px; }
 .fee-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .fee-card { background: #fff; border: 1.5px solid var(--gray-200); border-radius: var(--radius-lg); padding: 26px; position: relative; transition: box-shadow .2s ease, border-color .2s ease; scroll-margin-top: 100px; }
 .fee-card.highlight { border-color: var(--navy); box-shadow: var(--shadow-card); }
@@ -377,12 +376,6 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
       <h2>Flexible Learning.<br><span class="accent-red">A Brighter Future.</span></h2>
       <p class="mt-8" style="max-width:640px;">Choose a program, explore the fee details and payment options. Invest in industry-relevant skills and open doors to global opportunities.</p>
 
-      <div class="fee-tabs pill-group mt-32" role="tablist" aria-label="Jump to a program's fee card">
-        <button class="pill active" data-fee-tab="fee-bcom">B.Com + ACCA</button>
-        <button class="pill" data-fee-tab="fee-only">ACCA Only</button>
-        <button class="pill" data-fee-tab="fee-fast">ACCA Fast Track</button>
-      </div>
-
       <div class="fees-layout">
         <div class="fee-cards">
           <div class="fee-card highlight" id="fee-bcom">
@@ -524,16 +517,6 @@ body.home .site-header:not(.is-scrolled) .nav-toggle span { background: #fff; }
 <script src="assets/js/faq-data.js"></script>
 <script src="assets/js/faq.js"></script>
 <script>
-// Fee tabs: smooth-scroll + highlight the corresponding card (real, functional interaction)
-document.querySelectorAll('[data-fee-tab]').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    document.querySelectorAll('[data-fee-tab]').forEach(function (b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-    var target = document.getElementById(btn.getAttribute('data-fee-tab'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-});
-
 // Video play button: no video file ships in this repo, so give honest feedback instead of a dead click
 document.querySelectorAll('[data-play-video]').forEach(function (btn) {
   btn.addEventListener('click', function () {
