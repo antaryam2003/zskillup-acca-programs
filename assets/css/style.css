@@ -379,6 +379,7 @@ p { line-height: 1.65; color: var(--gray-600); margin: 0; }
 @media (max-width: 760px) { .cert-grid { grid-template-columns: 1fr; } }
 
 /* program investment */
+#program-investment { scroll-margin-top: 100px; }
 .invest-layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: 26px; margin-top: 32px; }
 .invest-card { background: #fff; border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--gray-200); }
 .invest-card h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .06em; }
